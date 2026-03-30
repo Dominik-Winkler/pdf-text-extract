@@ -1,0 +1,21 @@
+{
+  "name": "pdf-text-extract",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "turbo": "^2.8.21",
+    "typescript-eslint": "^8.57.2"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint"
+  },
+  "packageManager": "pnpm@10.25.0"
+}

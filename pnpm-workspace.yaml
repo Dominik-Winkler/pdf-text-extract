@@ -1,0 +1,15 @@
+packages:
+  - backend
+  - frontend
+
+ignoredBuiltDependencies:
+  - esbuild
+  - msw
+  - unrs-resolver
+
+onlyBuiltDependencies:
+  - "@nestjs/core"
+
+hoistPattern:
+  - "*eslint*"
+  - "*babel*"
