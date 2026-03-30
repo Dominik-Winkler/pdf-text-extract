@@ -9,7 +9,7 @@
     },
     "format": {},
     "lint": {
-      "dependsOn": ["^format"],
+      "dependsOn": ["format"],
       "outputs": []
     },
     "test": {}
