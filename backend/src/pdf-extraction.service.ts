@@ -12,7 +12,14 @@ export class PDFExtractionService {
       return result.text;
     } catch (error) {
       console.error('Error extracting text from PDF:', error);
-      throw new HttpException(error.message, HttpStatus.UNPROCESSABLE_ENTITY);
+      const error_ =
+        error instanceof Error
+          ? new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR)
+          : new HttpException(
+              'An unknown error occurred during PDF text extraction.',
+              HttpStatus.INTERNAL_SERVER_ERROR,
+            );
+      throw error_;
     }
   }
 }
