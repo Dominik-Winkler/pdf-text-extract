@@ -7,7 +7,7 @@ export class PDFExtractionService {
     try {
       const buffer = new Uint8Array(fileForExtraction.buffer);
       const parser = new PDFParse(buffer);
-      const result = await parser.getText();
+      const result = await parser.getText({ pageJoiner: '' });
       await parser.destroy();
       return result.text;
     } catch (error) {
