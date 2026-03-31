@@ -8,10 +8,11 @@
       "persistent": true
     },
     "format": {},
-    "lint": {
-      "dependsOn": ["format"],
-      "outputs": []
-    },
-    "test": {}
+    "lint": {},
+    "test": {},
+    "build": {
+      "dependsOn": ["test"],
+      "outputs": ["dist/**"]
+    }
   }
 }

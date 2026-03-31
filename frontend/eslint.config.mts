@@ -1,7 +1,6 @@
-// @ts-check
 import eslint from "@eslint/js"
 import eslintPluginQuery from "@tanstack/eslint-plugin-query"
-import eslintPluginPrettierRecommended from "eslint-config-prettier"
+import eslintConfigPrettier from "eslint-config-prettier"
 import eslintPluginUnicorn from "eslint-plugin-unicorn"
 import { defineConfig } from "eslint/config"
 import tseslint from "typescript-eslint"
@@ -9,7 +8,7 @@ import tseslint from "typescript-eslint"
 export default defineConfig(
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
-  eslintPluginPrettierRecommended,
+  eslintConfigPrettier,
   eslintPluginUnicorn.configs.recommended,
   eslintPluginQuery.configs["flat/recommended"],
   {
@@ -23,7 +22,7 @@ export default defineConfig(
     ignores: [
       ".react-router/**",
       ".turbo/**",
-      "eslint.config.mjs",
+      "eslint.config.mts",
       "node_modules/**",
       "tsconfig.eslint.json",
       "app/components/ui/**",

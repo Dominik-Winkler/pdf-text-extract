@@ -13,3 +13,4 @@ onlyBuiltDependencies:
 hoistPattern:
   - "*eslint*"
   - "*babel*"
+  - "*prettier*"

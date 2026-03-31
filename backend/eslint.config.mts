@@ -1,14 +1,14 @@
-// @ts-check
 import eslint from '@eslint/js';
+import type { Linter } from 'eslint';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import globals from 'globals';
-import { defineConfig } from 'eslint/config';
-import tseslint from 'typescript-eslint';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig(
   {
-    ignores: ['eslint.config.mjs'],
+    ignores: ['eslint.config.mts'],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
@@ -39,9 +39,9 @@ export default defineConfig(
     ignores: [
       'dist/**',
       '.turbo/**',
-      'eslint.config.mjs',
+      'eslint.config.mts',
       'node_modules/**',
       'tsconfig.eslint.json',
     ],
   },
-);
+) as Linter.Config[];
