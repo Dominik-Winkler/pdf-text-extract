@@ -4,24 +4,22 @@ WORKDIR /app
 
 FROM base AS deps
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
-COPY frontend/package.json ./frontend/package.json
 COPY backend/package.json ./backend/package.json
+COPY frontend/package.json ./frontend/package.json
 RUN pnpm install --frozen-lockfile
 
 FROM base AS build
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-RUN pnpm --filter frontend run build
+RUN pnpm --filter backend run build
 
 FROM build AS prod-deps
-RUN pnpm --filter frontend deploy --prod --legacy /prod/frontend
+RUN pnpm --filter backend deploy --prod --legacy /prod/backend
 
 FROM node:24.14-alpine
-RUN npm install -g pnpm
 WORKDIR /app
-COPY --from=prod-deps /prod/frontend ./
-COPY --from=build /app/frontend/build ./build
-ENV PORT=5173
-EXPOSE 5173
+COPY --from=prod-deps /prod/backend ./
+COPY --from=build /app/backend/dist ./dist
+EXPOSE 3000
 
-CMD ["pnpm", "run", "start"]
+CMD ["node", "dist/main"]
