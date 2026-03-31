@@ -13,9 +13,7 @@ export class AppController {
 
   @Post('extract-text')
   @UseInterceptors(FileInterceptor('file'))
-  async extractText(
-    @UploadedFile() file: Express.Multer.File,
-  ): Promise<string> {
+  async extractText(@UploadedFile() file: Express.Multer.File) {
     return await this.appService.getExtractText(file);
   }
 }
